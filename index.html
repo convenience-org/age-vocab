@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>The Age Vocabulary</title>
+    <meta http-equiv='Content-Type' content='text/html;charset=utf-8'/>
+    <!--
+      === NOTA BENE ===
+      For the three scripts below, if your spec resides on dev.w3 you can check them
+      out in the same tree and use relative links so that they'll work offline,
+     -->
+    <script src='https://www.w3.org/Tools/respec/respec-w3c-common' class='remove'></script>
+    <script class='remove'>
+      var respecConfig = {
+          // specification status (e.g. WD, LCWD, NOTE, etc.). If in doubt use ED.
+          specStatus:       "CG-DRAFT",
+
+          // the specification's short name, as in http://www.w3.org/TR/short-name/
+          shortName:        "age-vocab",
+
+          // if you wish the publication date to be other than today, set this
+          // publishDate:  "2009-08-06",
+
+          // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
+          // and its maturity status
+          // previousPublishDate:  "1977-03-15",
+          // previousMaturity:  "WD",
+
+          // if there a publicly available Editor's Draft, this is the link
+          edDraftURI:       "https://digitalbazaar.github.io/age-vocab/",
+
+          // if this is a LCWD, uncomment and set the end of its review period
+          // lcEnd: "2009-08-05",
+
+          // if you want to have extra CSS, append them to this list
+          // it is recommended that the respec.css stylesheet be kept
+          //extraCSS:             ["prettify.css"],
+
+          // editors, add as many as you like
+          // only "name" is required
+          editors:  [
+            { name: "Manu Sporny", url: "http://manu.sporny.org/",
+                company: "Digital Bazaar, Inc.", companyURL: "https://digitalbazaar.com/" },
+          ],
+
+          // authors, add as many as you like.
+          // This is optional, uncomment if you have authors as well as editors.
+          // only "name" is required. Same format as editors.
+
+          authors:  [
+            { name: "Manu Sporny", url: "http://manu.sporny.org/",
+                company: "Digital Bazaar, Inc.", companyURL: "https://digitalbazaar.com/" },
+          ],
+          github: "https://github.com/w3c-ccg/age-vocab/",
+
+          // extend the bibliography entries
+          //localBiblio: webpayments.localBiblio,
+
+          // name of the WG
+          wg:       "Credentials Community Group",
+
+          // URI of the public WG page
+          wgURI:    "https://digitalbazaar.github.io/",
+
+          // name (with the @w3c.org) of the public mailing to which comments are due
+          wgPublicList: "public-credentials@w3c.org",
+
+          // URI of the patent status for this WG, for Rec-track documents
+          // !!!! IMPORTANT !!!!
+          // This is important for Rec-track documents, do not copy a patent URI from a random
+          // document unless you know what you're doing. If in doubt ask your friendly neighbourhood
+          // Team Contact.
+          wgPatentURI:  "",
+
+          // Run the following pre-processing commands
+          preProcess: []
+    };
+    </script>
+    <script type="text/javascript" src="prettify.js" class="remove"></script>
+    <script type="text/javascript" src="lang-jsonld.js" class="remove"></script>
+    <script type="text/javascript" class="remove">
+      var oldonload = window.onload;
+      window.onload = function() {
+        if (oldonload) oldonload();
+        prettyPrint();
+      };
+    </script>
+  </head>
+  <body prefix="rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+    rdfs: http://www.w3.org/2000/01/rdf-schema#
+    owl: http://www.w3.org/2002/07/owl#
+    vs: http://www.w3.org/2003/06/sw-vocab-status/ns#
+    sec: https://w3id.org/security#">
+
+    <section id='abstract'>
+      <p>
+This vocabulary is used to express privacy-protecting assertions of age.
+      </p>
+    </section>
+
+    <section id='sotd'>
+      <p>
+This is an experimental vocabulary and is not intended for use in production
+systems by non-experts.
+      </p>
+    </section>
+
+    <section>
+      <h2>Introduction</h2>
+      <p>
+This vocabulary is used to express privacy-protecting assertions of age.
+      </p>
+      <p class="issue">
+This entire document is a work in progress and should be considered in beta
+until it is ratified as an official document via the World Wide Web Consortium.
+      </p>
+    </section>
+
+    <section>
+      <h2>Classes</h2>
+      <p>
+This vocabulary does not define any classes.
+      </p>
+    </section>
+
+    <section>
+      <h2>Properties</h2>
+
+      <section id="ageOver" about="https://w3id.org/age#ageOver"
+        typeof="rdf:Property">
+        <h3>ageOver</h3>
+        <p>
+Specifies that the subject is at least equal to or above the provided age.
+        </p>
+        <p>
+This property is not intended to establish the exact age of the subject. Many
+`ageOver` use cases require that the subject is viewed by an individual, given
+some discrection, to be a certain age based on the local laws. For example,
+imagine an individual is celebrating their birthday on which they become
+eligible to purchase and consume alcohol. If they were born at 11pm on their
+birthday, but the dinner is occuring at a restaurant at 6pm, a waiter is highly
+likely to determine them to be of age and allow them to purchase alcohol. It
+is with this imprecision noted that this property should be used. Effectively,
+the subject will be at least this age, give or take a day.
+        </p>
+        <dl>
+          <dt>Status</dt>
+          <dd property="vs:term_status">stable</dd>
+          <dt>Range</dt>
+          <dd>xsd:positiveInteger</dd>
+        </dl>
+        <p>
+
+        </p>
+        <pre class="example prettyprint language-jsonld">
+{
+  "@context": "https://w3id.org/age/v1",
+  "id": "https://example.com/people/manu",
+  "ageOver": 21
+}
+        </pre>
+      </section>
+
+    </section>
+  </body>
+</html>
