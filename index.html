@@ -125,15 +125,15 @@ This vocabulary does not define any classes.
     <section>
       <h2>Properties</h2>
 
-      <section id="ageOver" about="https://w3id.org/age#ageOver"
+      <section id="overAge" about="https://w3id.org/age#overAge"
         typeof="rdf:Property">
-        <h3>ageOver</h3>
+        <h3>overAge</h3>
         <p>
 Specifies that the subject is at least equal to or above the provided age.
         </p>
         <p>
 This property is not intended to establish the exact age of the subject. Many
-`ageOver` use cases require that the subject is viewed by an individual, given
+`overAge` use cases require that the subject is viewed by an individual, given
 some discrection, to be a certain age based on the local laws. For example,
 imagine an individual is celebrating their birthday on which they become
 eligible to purchase and consume alcohol. If they were born at 11pm on their
@@ -155,7 +155,7 @@ the subject will be at least this age, give or take a day.
 {
   "@context": "https://w3id.org/age/v1",
   "id": "https://example.com/people/manu",
-  "ageOver": 21
+  "overAge": 21
 }
         </pre>
       </section>
