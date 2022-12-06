@@ -1,165 +1,113 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html><head>
+    <meta charset="utf-8">
     <title>The Age Vocabulary</title>
-    <meta http-equiv='Content-Type' content='text/html;charset=utf-8'/>
-    <!--
-      === NOTA BENE ===
-      For the three scripts below, if your spec resides on dev.w3 you can check them
-      out in the same tree and use relative links so that they'll work offline,
-     -->
-    <script src='https://www.w3.org/Tools/respec/respec-w3c-common' class='remove'></script>
-    <script class='remove'>
+    <script class="remove" src="https://www.w3.org/Tools/respec/respec-w3c"></script>
+    <script class="remove">
       var respecConfig = {
-          // specification status (e.g. WD, LCWD, NOTE, etc.). If in doubt use ED.
-          specStatus:       "CG-DRAFT",
-
-          // the specification's short name, as in http://www.w3.org/TR/short-name/
-          shortName:        "age-vocab",
-
-          // if you wish the publication date to be other than today, set this
-          // publishDate:  "2009-08-06",
-
-          // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
-          // and its maturity status
-          // previousPublishDate:  "1977-03-15",
-          // previousMaturity:  "WD",
-
-          // if there a publicly available Editor's Draft, this is the link
-          edDraftURI:       "https://digitalbazaar.github.io/age-vocab/",
-
-          // if this is a LCWD, uncomment and set the end of its review period
-          // lcEnd: "2009-08-05",
-
-          // if you want to have extra CSS, append them to this list
-          // it is recommended that the respec.css stylesheet be kept
-          //extraCSS:             ["prettify.css"],
-
-          // editors, add as many as you like
-          // only "name" is required
-          editors:  [
-            { name: "Manu Sporny", url: "http://manu.sporny.org/",
-                company: "Digital Bazaar, Inc.", companyURL: "https://digitalbazaar.com/" },
-          ],
-
-          // authors, add as many as you like.
-          // This is optional, uncomment if you have authors as well as editors.
-          // only "name" is required. Same format as editors.
-
-          authors:  [
-            { name: "Manu Sporny", url: "http://manu.sporny.org/",
-                company: "Digital Bazaar, Inc.", companyURL: "https://digitalbazaar.com/" },
-          ],
-          github: "https://github.com/w3c-ccg/age-vocab/",
-
-          // extend the bibliography entries
-          //localBiblio: webpayments.localBiblio,
-
-          // name of the WG
-          wg:       "Credentials Community Group",
-
-          // URI of the public WG page
-          wgURI:    "https://digitalbazaar.github.io/",
-
-          // name (with the @w3c.org) of the public mailing to which comments are due
-          wgPublicList: "public-credentials@w3c.org",
-
-          // URI of the patent status for this WG, for Rec-track documents
-          // !!!! IMPORTANT !!!!
-          // This is important for Rec-track documents, do not copy a patent URI from a random
-          // document unless you know what you're doing. If in doubt ask your friendly neighbourhood
-          // Team Contact.
-          wgPatentURI:  "",
-
-          // Run the following pre-processing commands
-          preProcess: []
-    };
-    </script>
-    <script type="text/javascript" src="prettify.js" class="remove"></script>
-    <script type="text/javascript" src="lang-jsonld.js" class="remove"></script>
-    <script type="text/javascript" class="remove">
-      var oldonload = window.onload;
-      window.onload = function() {
-        if (oldonload) oldonload();
-        prettyPrint();
+        localBiblio: {
+        },
+        specStatus:  "base",
+        shortName:   "age",
+        thisVersion: "https://convenience-org.github.io/age-vocab/vocabulary.html",
+        latestVersion: "https://w3id.org/age",
+        doJsonLd:    true,
+        editors: [{
+          name:       "Manu Sporny",
+          url:        "http://manu.sporny.org/",
+          company:    "Digital Bazaar",
+          companyURL: "http://digitalbazaar.com/",
+          w3cid:      41758,
+        }],
+        authors: [{
+          name:       "The Conexxus Age Verification Working Group",
+          url:        "https://www.conexxus.org/resources/conexxus-age-verification-specification-v10",
+          company:    "Conexxus",
+          companyURL: "https://www.conexxus.org/"
+        }],
+        // group : "vc",
+        // github: {
+				// 	repoURL: "https://github.com/w3c/vc-data-model",
+				// 	branch: "main"
+				// },
+        alternateFormats: [
+          {uri: "age.ttl", label: "Turtle"},
+          {uri: "age.jsonld", label: "JSON-LD"}
+        ],
+        inlineCSS: true,
+        doRDFa: false,
+        noIDLIn: true,
+        noLegacyStyle: false
       };
     </script>
+    <style type="text/css">
+      dl.terms dt {
+        float: left;
+        clear: left;
+        width: 10vw;
+      }
+
+      dl.terms dd {
+        margin-left: 15vw;
+      }
+
+      dl.terms dd:after {
+          content: '';
+          display: block;
+          clear: both;
+          margin-bottom: 5px;
+      }
+      table.rdfs-definition td {
+        vertical-align: top;
+        margin-right: 2em;
+      }
+      .bold {
+        font-weight: bold;
+      }
+      code {
+        color: red;
+      }
+    </style>
   </head>
-  <body prefix="rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
-    rdfs: http://www.w3.org/2000/01/rdf-schema#
-    owl: http://www.w3.org/2002/07/owl#
-    vs: http://www.w3.org/2003/06/sw-vocab-status/ns#
-    sec: https://w3id.org/security#">
-
-    <section id='abstract'>
+  <body typeof="owl:Ontology" resource="https://w3id.org/age#" prefix="age: https://w3id.org/age# cred: https://w3.org/2018/credentials# xsd: http://www.w3.org/2001/XMLSchema# dc: http://purl.org/dc/terms/ owl: http://www.w3.org/2002/07/owl# rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns# rdfs: http://www.w3.org/2000/01/rdf-schema# xsd: http://www.w3.org/2001/XMLSchema#">
+    <section id="abstract">
+      <p>This document describes the <span property="dc:title" id="title">The Age Vocabulary</span>, i.e.,
+         the <span property="dc:description" id="description">the Age vocabulary is used in privacy-protecting age-related transactions, such as the acquisition of age-gated products like medicine, alcohol, and lottery
+</span>.
+      </p>
+      <p>Alternate versions of the vocabulary definition exist in
+        <a rel="alternate" href="age.ttl">Turtle</a> and
+        <a rel="alternate" href="age.jsonld">JSON-LD</a>.
+      </p>
+      <dl>
+        <dt>Published:</dt><dd><time property="dc:date" id="time">2022-12-06</time></dd>
+        <dt>Version Info:</dt>
+        <dd>1.0</dd>
+        <dt id="see_also">See Also: <a href="https://www.conexxus.org/resources/conexxus-age-verification-specification-v10" property="rdfs:seeAlso">https://www.conexxus.org/resources/conexxus-age-verification-specification-v10</a></dt>
+       </dl>
+    </section>
+    <section id="sotd">
       <p>
-This vocabulary is used to express privacy-protecting assertions of age.
+        Comments regarding this document are welcome. Please file issues
+        directly on <a href="https://github.com/convenience-org/age-vocab/issues/">GitHub</a>.
       </p>
     </section>
-
-    <section id='sotd'>
-      <p>
-This is an experimental vocabulary and is not intended for use in production
-systems by non-experts.
-      </p>
-    </section>
-
     <section>
-      <h2>Introduction</h2>
-      <p>
-This vocabulary is used to express privacy-protecting assertions of age.
-      </p>
-      <p class="issue">
-This entire document is a work in progress and should be considered in beta
-until it is ratified as an official document via the World Wide Web Consortium.
-      </p>
+      <h2>Namespaces</h2>
+      <p>This specification makes use of the following namespaces:</p>
+      <dl class="terms" id="namespaces">
+      <dt><code>age</code></dt><dd><code>https://w3id.org/age#</code></dd><dt><code>cred</code></dt><dd><code>https://w3.org/2018/credentials#</code></dd><dt><code>xsd</code></dt><dd><code>http://www.w3.org/2001/XMLSchema#</code></dd><dt><code>dc</code></dt><dd><code>http://purl.org/dc/terms/</code></dd><dt><code>owl</code></dt><dd><code>http://www.w3.org/2002/07/owl#</code></dd><dt><code>rdf</code></dt><dd><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></dd><dt><code>rdfs</code></dt><dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd><dt><code>xsd</code></dt><dd><code>http://www.w3.org/2001/XMLSchema#</code></dd></dl>
     </section>
 
-    <section>
-      <h2>Classes</h2>
-      <p>
-This vocabulary does not define any classes.
-      </p>
-    </section>
+    <section id="class_definitions">
+      <h1>Class definitions</h1>
+    <p>The following are  class definitions in the <code>age</code> namespace:</p><section id="AgeVerificationCredential" resource="age:AgeVerificationCredential" typeof="rdfs:Class"><h4><code>AgeVerificationCredential</code></h4><p property="rdfs:label"><em>An age verification credential</em></p><p property="rdfs:comment">A Verifiable Credential that contains an individual's age category, typically issued by an age verification system (such as TruAge). The AgeVerificationCredential is bound to the Personal Photo Verifiable Credential in a privacy-preserving manner (via a cryptographic hash). This Verifiable Credential contains a `refreshService` API endpoint and is used by software to request additional `OverAgeTokenCredential`s, when they are consumed.</p><span property="rdfs:isDefinedBy" resource="age:"></span></section><section id="AgeVerificationContainerCredential" resource="age:AgeVerificationContainerCredential" typeof="rdfs:Class"><h4><code>AgeVerificationContainerCredential</code></h4><p property="rdfs:label"><em>A container for age verification credentials</em></p><p property="rdfs:comment">The age verification container credential cryptographically binds an `AgeVerificationCredential` to one or more `OverAgeTokenCredential`s.</p><span property="rdfs:isDefinedBy" resource="age:"></span></section><section id="OverAgeTokenCredential" resource="age:OverAgeTokenCredential" typeof="rdfs:Class"><h4><code>OverAgeTokenCredential</code></h4><p property="rdfs:label"><em>Privacy-preserving single-use tokenized age credential</em></p><p property="rdfs:comment">A privacy-preserving single-use tokenized age credential that can be used during an age-gated transaction. The receiver of this credential can verify both the age category of the holder that delivered this credential and know that the credential has been digitally signed by an age verification authority without being able to track the individual using the token. The age verification authority is the only entity that can map the single-use token back to an individual. This process is manual, and only occurs if a legal subpoena for information is filed in a court of law during a legal proceeding. An individual that uses these tokens will utilize a different token per transaction, which protects their privacy among anyone engaging in an age-gated transaction with the individual while meeting regulatory burden for age-gated transactions that require that a proof of age was checked. This credential is either presented electronically over the Internet, or displayed as a single-use QR Code at a point of sale.</p><span property="rdfs:isDefinedBy" resource="age:"></span></section></section>
 
-    <section>
-      <h2>Properties</h2>
+    <section id="property_definitions">
+      <h1>Property definitions</h1>
+    <p>The following are  property definitions in the <code>age</code> namespace:</p><section id="overAge" resource="age:overAge" typeof="rdfs:Property owl:DatatypeProperty"><h4><code>overAge</code></h4><p property="rdfs:label"><em>Specifies that the subject is at least equal to or above the provided age.</em></p><p property="rdfs:comment">This property is not intended to establish the exact age of the subject. Many overAge use cases require that the subject is viewed by an individual, given some discrection, to be a certain age based on the local laws. For example, imagine an individual is celebrating their birthday on which they become eligible to purchase and consume alcohol. If they were born at 11pm on their birthday, but the dinner is occuring at a restaurant at 6pm, a waiter is highly likely to determine them to be of age and allow them to purchase alcohol. It is with this imprecision noted that this property should be used. Effectively, the subject will be at least this age, give or take a day.</p><span property="rdfs:isDefinedBy" resource="age:"></span><dl class="terms"><dt>Range:</dt><dd property="rdfs:range" resource="xsd:positiveInteger"><code>xsd:positiveInteger</code></dd><dt>Domain:</dt><dd property="rdfs:domain" resource="age:OverAgeTokenCredential"><code>age:OverAgeTokenCredential</code></dd></dl></section></section>
 
-      <section id="overAge" about="https://w3id.org/age#overAge"
-        typeof="rdf:Property">
-        <h3>overAge</h3>
-        <p>
-Specifies that the subject is at least equal to or above the provided age.
-        </p>
-        <p>
-This property is not intended to establish the exact age of the subject. Many
-`overAge` use cases require that the subject is viewed by an individual, given
-some discrection, to be a certain age based on the local laws. For example,
-imagine an individual is celebrating their birthday on which they become
-eligible to purchase and consume alcohol. If they were born at 11pm on their
-birthday, but the dinner is occuring at a restaurant at 6pm, a waiter is highly
-likely to determine them to be of age and allow them to purchase alcohol. It
-is with this imprecision noted that this property should be used. Effectively,
-the subject will be at least this age, give or take a day.
-        </p>
-        <dl>
-          <dt>Status</dt>
-          <dd property="vs:term_status">stable</dd>
-          <dt>Range</dt>
-          <dd>xsd:positiveInteger</dd>
-        </dl>
-        <p>
+    
+  
 
-        </p>
-        <pre class="example prettyprint language-jsonld">
-{
-  "@context": "https://w3id.org/age/v1",
-  "id": "https://example.com/people/manu",
-  "overAge": 21
-}
-        </pre>
-      </section>
-
-    </section>
-  </body>
-</html>
+</body></html>
