@@ -1,0 +1,66 @@
+vocab:
+  id: age
+  value: https://w3id.org/age#
+
+prefix:
+  - id: cred
+    value: https://w3.org/2018/credentials#
+  - id: xsd
+    value: http://www.w3.org/2001/XMLSchema#
+
+ontology:
+  - property: dc:title
+    value: The Age Vocabulary
+
+  - property: dc:description
+    value: >
+      the Age vocabulary is used in privacy-protecting age-related transactions,
+      such as the acquisition of age-gated products like medicine, alcohol, and
+      lottery
+
+  - property: rdfs:seeAlso
+    value: https://www.conexxus.org/resources/conexxus-age-verification-specification-v10
+
+class:
+  - id: AgeVerificationCredential
+    label: An age verification credential
+    comment: >
+      A Verifiable Credential that contains an individual's age category,
+      typically issued by an age verification system (such as TruAge).
+      The AgeVerificationCredential is bound to the Personal Photo
+      Verifiable Credential in a privacy-preserving manner
+      (via a cryptographic hash). This Verifiable Credential contains a
+      `refreshService` API endpoint and is used by software to
+      request additional `OverAgeTokenCredential`s, when they are consumed.
+
+  - id: AgeVerificationContainerCredential
+    label: A container for age verification credentials
+    comment: >
+      The age verification container credential cryptographically binds an
+      `AgeVerificationCredential` to one or more `OverAgeTokenCredential`s.
+
+  - id: OverAgeTokenCredential
+    label: Privacy-preserving single-use tokenized age credential
+    comment: >
+      A privacy-preserving single-use tokenized age credential that can be
+      used during an age-gated transaction. The receiver of this credential
+      can verify both the age category of the holder that delivered this
+      credential and know that the credential has been digitally signed by an
+      age verification authority without being able to track the individual
+      using the token. The age verification authority is the only entity that
+      can map the single-use token back to an individual. This process is
+      manual, and only occurs if a legal subpoena for information is filed
+      in a court of law during a legal proceeding. An individual that uses
+      these tokens will utilize a different token per transaction, which
+      protects their privacy among anyone engaging in an age-gated transaction
+      with the individual while meeting regulatory burden for age-gated
+      transactions that require that a proof of age was checked. This
+      credential is either presented electronically over the Internet, or
+      displayed as a single-use QR Code at a point of sale.
+
+property:
+  - id: overAge
+    label: Specifies that the subject is at least equal to or above the provided age.
+    domain: age:OverAgeTokenCredential
+    range: xsd:positiveInteger
+    comment: This property is not intended to establish the exact age of the subject. Many overAge use cases require that the subject is viewed by an individual, given some discrection, to be a certain age based on the local laws. For example, imagine an individual is celebrating their birthday on which they become eligible to purchase and consume alcohol. If they were born at 11pm on their birthday, but the dinner is occuring at a restaurant at 6pm, a waiter is highly likely to determine them to be of age and allow them to purchase alcohol. It is with this imprecision noted that this property should be used. Effectively, the subject will be at least this age, give or take a day.
