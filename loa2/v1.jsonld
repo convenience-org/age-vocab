@@ -1,0 +1,35 @@
+{
+  "@context": {
+    "@protected": "true",
+    "id": "@id",
+    "type": "@type",
+    "Level2AgeAssuranceCredential":
+      "https://w3id.org/age/loa2#Level2AgeAssuranceCredential",
+    "Level2AgeAssuranceCheck": {
+      "@id": "https://w3id.org/age/loa2#Level2AgeAssuranceCredential",
+      "@context": {
+        "@protected": true,
+        "documentIdentifier": "https://w3id.org/age/loa2#documentIdentifier",
+        "issuingAuthority": "https://w3id.org/age/loa2#issuingAuthority",
+        "expirationDate": {
+          "@id": "https://w3id.org/age/loa2#expirationDate",
+          "@type": "http://www.w3.org/2001/XMLSchema#date"
+        },
+        "dateOfBirth": {
+          "@id": "https://w3id.org/age/loa2#dateOfBirth",
+          "@type": "http://www.w3.org/2001/XMLSchema#date"
+        },
+        "personalPhotoCredential": {
+          "@id": "https://convenience.org/vocab#personalPhotoCredential",
+          "@context": {
+            "@protected": true,
+            "digestMultibase": {
+              "@id": "https://w3id.org/age/loa2#expirationDate",
+              "@type": "https://w3id.org/security#multibase"
+            }
+          }
+        }
+      }
+    }
+  }
+}
