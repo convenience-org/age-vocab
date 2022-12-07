@@ -1,0 +1,81 @@
+@prefix ageloa2: <https://w3id.org/age/loa2#> .
+@prefix cred: <https://w3.org/2018/credentials#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Ontology definition
+cred: a owl:Ontology ;
+    dc:title """Age Assurance Level 2 Vocabulary"""@en ;
+    dc:description """vocabulary is used to express an identity proofing event that meets the the U.S. National Institute of Standards criteria for an Identity Assurance Level 2 vetting as listed in NIST Special Publication 800-63a
+"""@en ;
+    rdfs:seeAlso <https://www.conexxus.org/resources/conexxus-age-verification-specification-v10> ;
+    rdfs:seeAlso <https://pages.nist.gov/800-63-3/sp800-63a.html> ;
+    dc:date "2022-12-07"^^xsd:date ;
+.
+
+# Class definitions
+ageloa2:Level2AgeAssuranceCredential a rdfs:Class ;
+    rdfs:label "An age assurance credential that meets NIST Identity Assurance Level 2" ;
+    rdfs:comment """This Verifiable Credential communicates information about a document check that would be necessary for a system to validate whether or not to accept it as a valid identity proofing event. This information includes: The Document Number of the individual's identity document (e.g. driver's license #)The Issuing Authority (e.g. a specific DMV)The individual's Date of BirthThe Expiration Date of the identity documentA cryptographic hash of a credential containing the individual's photo This mechanism is designed to be used with systems that only collect the minimum amount of information required to perform age verification during a transaction. This mechanism is designed to preserve the individual's privacy and therefore does not collect biometric images or non-relevant data from the identity document (but rather cryptographically links to the biometric information in case the check needs to be performed in the future against the same image used during the check). The NIST Identity Assurance Level 2 Age Assurance Verifiable Credential must be from an issuer which is a trusted Issuing Authority (e.g. a particular DMV) represented by a known Decentralized Identifier (DID)."""@en ;
+    rdfs:isDefinedBy cred: ;
+.
+
+ageloa2:Level2AgeAssuranceCheck a rdfs:Class ;
+    rdfs:label "An age assurance check event that meets criteria defined for NIST Identity Assurance Level 2" ;
+    rdfs:comment """An event that binds the following pieces of information together while ensuring that the individual presenting the information matches the information provided: The Document Number of the individual's identity document (e.g. driver's license #)The Issuing Authority (e.g. a specific DMV)The individual's Date of BirthThe Expiration Date of the identity documentA cryptographic hash of a credential containing the individual's photo"""@en ;
+    rdfs:isDefinedBy cred: ;
+.
+
+
+
+# Property definitions
+ageloa2:personalPhotoCredential a rdfs:Property, owl:ObjectProperty ;
+    rdfs:domain ageloa2:Level2AgeAssuranceCheck ;
+    rdfs:label "A reference to a personal photo" ;
+    rdfs:comment """A personal photo credential references a credential containing an image that has been used during an identity proofing process. The object itself is privacy-preserving and only contains an identifier and a cryptographic hash of the credential containing the image. The image associated with the personal photo credential matches against the image associated with the `identityDocument` and the individual that presented both pieces of information during an interactive identity proofing event that was performed either in person or remotely."""@en ;
+    rdfs:isDefinedBy cred: ;
+.
+
+ageloa2:identityDocument a rdfs:Property ;
+    rdfs:domain ageloa2:Level2AgeAssuranceCheck ;
+    rdfs:label "An identity document" ;
+    rdfs:comment """An identity document that was used during an identity proofing process. The object itself is minimizes the identity document fields shared to the minimum necessary for the transaction. The image associated with the identity document is assumed to be matched against the `personalPhotoCredential` as the during an interactive identity proofing event that was performed either in person or remotely."""@en ;
+    rdfs:isDefinedBy cred: ;
+.
+
+ageloa2:documentIdentifier a rdfs:Property, owl:DatatypeProperty ;
+    rdfs:domain ageloa2:Level2AgeAssuranceCheck ;
+    rdfs:range xsd:string ;
+    rdfs:label "Identifier for an identity document" ;
+    rdfs:comment """An identifier for an identity document such as a Driver's License number, passport number, employee ID number, or other unique serial number that can be used to identify the document used."""@en ;
+    rdfs:isDefinedBy cred: ;
+.
+
+ageloa2:expirationDate a rdfs:Property, owl:DatatypeProperty ;
+    rdfs:domain ageloa2:Level2AgeAssuranceCheck ;
+    rdfs:range xsd:positiveInteger ;
+    rdfs:label "Expiration date of an identity document" ;
+    rdfs:comment """The expiration date of the identity document."""@en ;
+    rdfs:isDefinedBy cred: ;
+.
+
+ageloa2:dateOfBirth a rdfs:Property, owl:DatatypeProperty ;
+    rdfs:domain ageloa2:Level2AgeAssuranceCheck ;
+    rdfs:range xsd:positiveInteger ;
+    rdfs:label "Date of birth listed on an identity document" ;
+    rdfs:comment """The date of birth associated with the individual identified by the identity document."""@en ;
+    rdfs:isDefinedBy cred: ;
+.
+
+ageloa2:issuingAuthority a rdfs:Property, owl:DatatypeProperty ;
+    rdfs:domain ageloa2:Level2AgeAssuranceCheck ;
+    rdfs:range xsd:positiveInteger ;
+    rdfs:label "Issuing authority for an identity document" ;
+    rdfs:comment """The entity that issued the identity document such as a corporation or local, state, or national government."""@en ;
+    rdfs:isDefinedBy cred: ;
+.
+
