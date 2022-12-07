@@ -9,11 +9,11 @@
 
 # Ontology definition
 cred: a owl:Ontology ;
-    dc:title """The Age Vocabulary"""@en ;
-    dc:description """the Age vocabulary is used in privacy-protecting age-related transactions, such as the acquisition of age-gated products like medicine, alcohol, and lottery
+    dc:title """The Age Verification Vocabulary"""@en ;
+    dc:description """the Age Verification vocabulary is used in privacy-protecting age-related transactions, such as the acquisition of age-gated products like medicine, alcohol, and lottery
 """@en ;
     rdfs:seeAlso <https://www.conexxus.org/resources/conexxus-age-verification-specification-v10> ;
-    dc:date "2022-12-06"^^xsd:date ;
+    dc:date "2022-12-07"^^xsd:date ;
 .
 
 # Class definitions

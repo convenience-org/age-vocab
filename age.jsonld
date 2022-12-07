@@ -79,13 +79,13 @@
     "@id": "https://w3id.org/age#",
     "@type": "owl:Ontology",
     "dc:title": {
-        "en": "The Age Vocabulary"
+        "en": "The Age Verification Vocabulary"
     },
     "dc:description": {
-        "en": "the Age vocabulary is used in privacy-protecting age-related transactions, such as the acquisition of age-gated products like medicine, alcohol, and lottery\n"
+        "en": "the Age Verification vocabulary is used in privacy-protecting age-related transactions, such as the acquisition of age-gated products like medicine, alcohol, and lottery\n"
     },
     "rdfs:seeAlso": "https://www.conexxus.org/resources/conexxus-age-verification-specification-v10",
-    "dc:date": "2022-12-06",
+    "dc:date": "2022-12-07",
     "rdfs_classes": [
         {
             "@id": "age:AgeVerificationCredential",

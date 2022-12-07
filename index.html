@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html><head>
     <meta charset="utf-8">
-    <title>The Age Vocabulary</title>
+    <title>The Age Verification Vocabulary</title>
     <script class="remove" src="https://www.w3.org/Tools/respec/respec-w3c"></script>
     <script class="remove">
       var respecConfig = {
@@ -9,7 +9,7 @@
         },
         specStatus:  "base",
         shortName:   "age",
-        thisVersion: "https://convenience-org.github.io/age-vocab/vocabulary.html",
+        thisVersion: "https://convenience-org.github.io/age-vocab/",
         latestVersion: "https://w3id.org/age",
         doJsonLd:    true,
         editors: [{
@@ -71,8 +71,8 @@
   </head>
   <body typeof="owl:Ontology" resource="https://w3id.org/age#" prefix="age: https://w3id.org/age# cred: https://w3.org/2018/credentials# xsd: http://www.w3.org/2001/XMLSchema# dc: http://purl.org/dc/terms/ owl: http://www.w3.org/2002/07/owl# rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns# rdfs: http://www.w3.org/2000/01/rdf-schema# xsd: http://www.w3.org/2001/XMLSchema#">
     <section id="abstract">
-      <p>This document describes the <span property="dc:title" id="title">The Age Vocabulary</span>, i.e.,
-         the <span property="dc:description" id="description">the Age vocabulary is used in privacy-protecting age-related transactions, such as the acquisition of age-gated products like medicine, alcohol, and lottery
+      <p>This document describes the <span property="dc:title" id="title">The Age Verification Vocabulary</span>, i.e.,
+         the <span property="dc:description" id="description">the Age Verification vocabulary is used in privacy-protecting age-related transactions, such as the acquisition of age-gated products like medicine, alcohol, and lottery
 </span>.
       </p>
       <p>Alternate versions of the vocabulary definition exist in
@@ -80,7 +80,7 @@
         <a rel="alternate" href="age.jsonld">JSON-LD</a>.
       </p>
       <dl>
-        <dt>Published:</dt><dd><time property="dc:date" id="time">2022-12-06</time></dd>
+        <dt>Published:</dt><dd><time property="dc:date" id="time">2022-12-07</time></dd>
         <dt>Version Info:</dt>
         <dd>1.0</dd>
         <dt id="see_also">See Also: <a href="https://www.conexxus.org/resources/conexxus-age-verification-specification-v10" property="rdfs:seeAlso">https://www.conexxus.org/resources/conexxus-age-verification-specification-v10</a></dt>
@@ -101,7 +101,107 @@
 
     <section id="class_definitions">
       <h1>Class definitions</h1>
-    <p>The following are  class definitions in the <code>age</code> namespace:</p><section id="AgeVerificationCredential" resource="age:AgeVerificationCredential" typeof="rdfs:Class"><h4><code>AgeVerificationCredential</code></h4><p property="rdfs:label"><em>An age verification credential</em></p><p property="rdfs:comment">A Verifiable Credential that contains an individual's age category, typically issued by an age verification system (such as TruAge). The AgeVerificationCredential is bound to the Personal Photo Verifiable Credential in a privacy-preserving manner (via a cryptographic hash). This Verifiable Credential contains a `refreshService` API endpoint and is used by software to request additional `OverAgeTokenCredential`s, when they are consumed.</p><span property="rdfs:isDefinedBy" resource="age:"></span></section><section id="AgeVerificationContainerCredential" resource="age:AgeVerificationContainerCredential" typeof="rdfs:Class"><h4><code>AgeVerificationContainerCredential</code></h4><p property="rdfs:label"><em>A container for age verification credentials</em></p><p property="rdfs:comment">The age verification container credential cryptographically binds an `AgeVerificationCredential` to one or more `OverAgeTokenCredential`s.</p><span property="rdfs:isDefinedBy" resource="age:"></span></section><section id="OverAgeTokenCredential" resource="age:OverAgeTokenCredential" typeof="rdfs:Class"><h4><code>OverAgeTokenCredential</code></h4><p property="rdfs:label"><em>Privacy-preserving single-use tokenized age credential</em></p><p property="rdfs:comment">A privacy-preserving single-use tokenized age credential that can be used during an age-gated transaction. The receiver of this credential can verify both the age category of the holder that delivered this credential and know that the credential has been digitally signed by an age verification authority without being able to track the individual using the token. The age verification authority is the only entity that can map the single-use token back to an individual. This process is manual, and only occurs if a legal subpoena for information is filed in a court of law during a legal proceeding. An individual that uses these tokens will utilize a different token per transaction, which protects their privacy among anyone engaging in an age-gated transaction with the individual while meeting regulatory burden for age-gated transactions that require that a proof of age was checked. This credential is either presented electronically over the Internet, or displayed as a single-use QR Code at a point of sale.</p><span property="rdfs:isDefinedBy" resource="age:"></span></section></section>
+    <p>The following are  class definitions in the <code>age</code> namespace:</p><section id="AgeVerificationCredential" resource="age:AgeVerificationCredential" typeof="rdfs:Class"><h4><code>AgeVerificationCredential</code></h4><p property="rdfs:label"><em>An age verification credential</em></p><p property="rdfs:comment">A Verifiable Credential that contains an individual's age category, typically issued by an age verification system (such as TruAge). The AgeVerificationCredential is bound to the Personal Photo Verifiable Credential in a privacy-preserving manner (via a cryptographic hash). This Verifiable Credential contains a `refreshService` API endpoint and is used by software to request additional `OverAgeTokenCredential`s, when they are consumed.</p><span property="rdfs:isDefinedBy" resource="age:"></span><pre class="example prettyprint language-json" title="An age verification credential">{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://w3id.org/age/v1",
+    "https://w3id.org/security/suites/ed25519-2020/v1"
+  ],
+  "id": "urn:uuid:fae50b6a-7685-11ed-b003-9be244b48366",
+  "type": ["VerifiableCredential", "AgeVerificationCredential"],
+  "issuer": {
+    // A DID representing an age verification provider
+    "id": "did:key:z6MksFxi8wnHkNq4zgEskSZF45SuWQ4HndWSAVYRRGe9qDks",
+    "image": "data:image/png;base64,iVBORw0KGgoAAAA...",
+    "name": "TruAge"
+  },
+  "issuanceDate": "2022-04-03T00:00:00.000Z",
+  "expirationDate": "2022-12-15T00:00:00.000Z",
+  "name": "Age Verification Credential",
+  "anchoredResource": {
+      "id": "urn:uuid:a1486392-763d-11ed-8281-6be4ae1436ac",
+      "digestMultibase": "zQmdfTbBqBPQ7VNxZEYEj14VmRuZBkqFbiwReogJgS1zR1n"
+  },
+  "credentialSubject": {
+    "overAge": 21
+  },
+  "refreshService": {
+    "id": "urn:uuid:3e25303a-7686-11ed-84fb-c37973e63ee0",
+    "type": "VerifiableCredentialRefreshService2021",
+    "url": "https://registration.provider.example/flows/reissue-age-token",
+    "refreshToken":
+      // This is a ConcealedIdToken, used by wallet for 'reissue'
+      // operation, to get more tokens
+      "z2BJYfNtmWRiouWhDrbDQmC2zicU...PBxsPg"
+  },
+  "proof": {
+    // signed by the age verification provider
+      "type": "Ed25519Signature2020",
+      "created": '2022-06-13T14:02:44Z',
+      "verificationMethod": 'did:key:z6MkpH7YDw3LBmqTmUzifCBe999t8DatvWnpxSgYQn9UEeyc
+        #z6MkpH7YDw3LBmqTmUzifCBe999t8DatvWnpxSgYQn9UEeyc',
+      "proofPurpose": 'assertionMethod',
+      "proofValue": 'zw9xkGemVTwuf...FBJcpKzzf9kNeCvhkSt1dsD'
+  }
+}
+</pre></section><section id="AgeVerificationContainerCredential" resource="age:AgeVerificationContainerCredential" typeof="rdfs:Class"><h4><code>AgeVerificationContainerCredential</code></h4><p property="rdfs:label"><em>A container for age verification credentials</em></p><p property="rdfs:comment">The age verification container credential cryptographically binds an `AgeVerificationCredential` to one or more `OverAgeTokenCredential`s.</p><span property="rdfs:isDefinedBy" resource="age:"></span><pre class="example prettyprint language-json" title="An age verification container credential">{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://w3id.org/age/v1",
+    "https://w3id.org/security/suites/ed25519-2020/v1"
+  ],
+  "id": "urn:uuid:bea33996-7686-11ed-9aee-ef312e702bc1",
+  "type": ["VerifiableCredential", "AgeVerificationContainerCredential"],
+  "issuer": {
+    // A DID representing an age verification provider
+    "id": "did:key:z6MksFxi8wnHkNq4zgEskSZF45SuWQ4HndWSAVYRRGe9qDks",
+    "image": "data:image/png;base64,iVBORw0KGgoAAAA...",
+    "name": "TruAge"
+  },
+  "issuanceDate": "2022-04-03T00:00:00.000Z",
+  "expirationDate": "2022-12-15T00:00:00.000Z",
+  "name": "Age Verification Container Credential",
+  "description": 'Age Verification Credential bundle container.',
+  "credentialSubject": {
+    "id": "urn:uuid:e47c7f06-7686-11ed-a293-ef81d2fb6c3f",
+    "digestMultibase": "zQmdEj14VmRuZBkqFbiwReogJgS1zRfTbBqBPQ7VNxZEY1n"
+    "anchoredResource": [{
+      // concealed ID token VC #1
+      "id": "urn:uuid:b190bbf6-7687-11ed-adec-336f3e464a20",
+      "digestMultibase": "zQmBPQ7VNxZEY1ndEj14VmRuZBkqFbiwReogJgS1zRfTbBq"
+    }, {
+      // concealed ID token VC #2
+      "id": "urn:uuid:b1cfd214-7687-11ed-8191-1fce82363661",
+      "digestMultibase": "zQm7VNxZEY1ndEj14VmRuZBkqFbiwReogJgS1zRfTbBqBPQ"
+    }]
+  },
+  "proof": { ...}
+}
+</pre></section><section id="OverAgeTokenCredential" resource="age:OverAgeTokenCredential" typeof="rdfs:Class"><h4><code>OverAgeTokenCredential</code></h4><p property="rdfs:label"><em>Privacy-preserving single-use tokenized age credential</em></p><p property="rdfs:comment">A privacy-preserving single-use tokenized age credential that can be used during an age-gated transaction. The receiver of this credential can verify both the age category of the holder that delivered this credential and know that the credential has been digitally signed by an age verification authority without being able to track the individual using the token. The age verification authority is the only entity that can map the single-use token back to an individual. This process is manual, and only occurs if a legal subpoena for information is filed in a court of law during a legal proceeding. An individual that uses these tokens will utilize a different token per transaction, which protects their privacy among anyone engaging in an age-gated transaction with the individual while meeting regulatory burden for age-gated transactions that require that a proof of age was checked. This credential is either presented electronically over the Internet, or displayed as a single-use QR Code at a point of sale.</p><span property="rdfs:isDefinedBy" resource="age:"></span><pre class="example prettyprint language-json" title="An over age token credential">{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://w3id.org/age/v1",
+    "https://w3id.org/security/suites/ed25519-2020/v1"
+  ],
+  "id": "urn:uuid:188e8450-269e-11eb-b545-d3692cf35398",
+  "type": ["VerifiableCredential", "OverAgeTokenCredential"],
+  "issuer": "did:key:z6MkkUbCFazdoducKf8SUye7cAxuicMdDBhXKWuTEuGA3jQF",
+  "issuanceDate": "2022-03-24T20:03:03Z",
+  "expirationDate": "2022-06-24T20:03:03Z",
+  "credentialSubject": {
+    "overAge": 21,
+    "concealedIdToken": "zo58FV8vqzY2Z...rX8o46SF"
+  },
+  "proof": {
+    "type": "Ed25519Signature2020",
+    "created": "2022-08-07T21:36:26Z",
+    "verificationMethod": "did:key:z6MkkUbCFazdoducKf8SUye7cAxuicMdDBhXKWuTEuGA3jQF
+      #z6MkkUbCFazdoducKf8SUye7cAxuicMdDBhXKWuTEuGA3jQF",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "z4mAs9uHU16jR4x...RSu9jSxPCF"
+  }
+}
+</pre></section></section>
 
     <section id="property_definitions">
       <h1>Property definitions</h1>
