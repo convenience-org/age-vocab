@@ -85,10 +85,10 @@
         "en": "vocabulary is used to express an identity proofing event that meets the the U.S. National Institute of Standards criteria for an Identity Assurance Level 2 vetting as listed in NIST Special Publication 800-63a\n"
     },
     "rdfs:seeAlso": "https://pages.nist.gov/800-63-3/sp800-63a.html",
-    "dc:date": "2022-12-07",
+    "dc:date": "2022-12-08",
     "rdfs_classes": [
         {
-            "@id": "ageloa2:Level2AgeAssuranceCredential",
+            "@id": "ageloa2:AgeAssuranceLevel2Credential",
             "@type": "rdfs:Class",
             "rdfs:label": {
                 "en": "An age assurance credential that meets NIST Identity Assurance Level 2"
@@ -98,7 +98,7 @@
             }
         },
         {
-            "@id": "ageloa2:Level2AgeAssuranceCheck",
+            "@id": "ageloa2:AgeAssuranceLevel2Check",
             "@type": "rdfs:Class",
             "rdfs:label": {
                 "en": "An age assurance check event that meets criteria defined for NIST Identity Assurance Level 2"
@@ -115,7 +115,7 @@
                 "rdfs:Property",
                 "owl:ObjectProperty"
             ],
-            "rdfs:domain": "ageloa2:Level2AgeAssuranceCheck",
+            "rdfs:domain": "ageloa2:AgeAssuranceLevel2Check",
             "rdfs:label": {
                 "en": "A reference to a personal photo"
             },
@@ -126,7 +126,7 @@
         {
             "@id": "ageloa2:identityDocument",
             "@type": "rdfs:Property",
-            "rdfs:domain": "ageloa2:Level2AgeAssuranceCheck",
+            "rdfs:domain": "ageloa2:AgeAssuranceLevel2Check",
             "rdfs:label": {
                 "en": "An identity document"
             },
@@ -140,7 +140,7 @@
                 "rdfs:Property",
                 "owl:DatatypeProperty"
             ],
-            "rdfs:domain": "ageloa2:Level2AgeAssuranceCheck",
+            "rdfs:domain": "ageloa2:AgeAssuranceLevel2Check",
             "rdfs:range": "xsd:string",
             "rdfs:label": {
                 "en": "Identifier for an identity document"
@@ -155,7 +155,7 @@
                 "rdfs:Property",
                 "owl:DatatypeProperty"
             ],
-            "rdfs:domain": "ageloa2:Level2AgeAssuranceCheck",
+            "rdfs:domain": "ageloa2:AgeAssuranceLevel2Check",
             "rdfs:range": "xsd:positiveInteger",
             "rdfs:label": {
                 "en": "Expiration date of an identity document"
@@ -170,7 +170,7 @@
                 "rdfs:Property",
                 "owl:DatatypeProperty"
             ],
-            "rdfs:domain": "ageloa2:Level2AgeAssuranceCheck",
+            "rdfs:domain": "ageloa2:AgeAssuranceLevel2Check",
             "rdfs:range": "xsd:positiveInteger",
             "rdfs:label": {
                 "en": "Date of birth listed on an identity document"
@@ -185,7 +185,7 @@
                 "rdfs:Property",
                 "owl:DatatypeProperty"
             ],
-            "rdfs:domain": "ageloa2:Level2AgeAssuranceCheck",
+            "rdfs:domain": "ageloa2:AgeAssuranceLevel2Check",
             "rdfs:range": "xsd:positiveInteger",
             "rdfs:label": {
                 "en": "Issuing authority for an identity document"

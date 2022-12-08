@@ -25,7 +25,7 @@ ontology:
     value: https://pages.nist.gov/800-63-3/sp800-63a.html
 
 class:
-  - id: Level2AgeAssuranceCredential
+  - id: AgeAssuranceLevel2Credential
     label: An age assurance credential that meets NIST Identity Assurance Level 2
     comment: >
       This Verifiable Credential communicates information about a document check
@@ -53,7 +53,7 @@ class:
             ],
             "type": [
               "VerifiableCredential",
-              "Level2AgeAssuranceCredential"
+              "AgeAssuranceLevel2Credential"
             ],
             "issuer": {
               // DID for DMV
@@ -69,7 +69,7 @@ class:
                 license.",
             "credentialSubject": {
               "id": "urn:uuid:00b8648e-763f-11ed-8c04-fb4c1f1729e6",
-              "type": "Level2AgeAssuranceCheck",
+              "type": "AgeAssuranceLevel2Check",
               "personalPhotoCredential": {
                 "id": "urn:uuid:a1486392-763d-11ed-8281-6be4ae1436ac",
                 "digestMultibase": "zQmdfTbBqBPQ7VNxZEYEj14VmRuZBkqFbiwReogJgS1zR1n"
@@ -92,7 +92,7 @@ class:
             }
           }
 
-  - id: Level2AgeAssuranceCheck
+  - id: AgeAssuranceLevel2Check
     label: An age assurance check event that meets criteria defined for NIST Identity Assurance Level 2
     comment: >
       An event that binds the following pieces of information together while
@@ -108,11 +108,11 @@ class:
               "https://w3id.org/age/loa2/v1",
               "https://w3id.org/security/suites/ed25519-2020/v1"
             ],
-            "type": ["VerifiableCredential", "Level2AgeAssuranceCredential"],
+            "type": ["VerifiableCredential", "AgeAssuranceLevel2Credential"],
             ...
             "credentialSubject": {
               "id": "urn:uuid:00b8648e-763f-11ed-8c04-fb4c1f1729e6",
-              "type": "Level2AgeAssuranceCheck",
+              "type": "AgeAssuranceLevel2Check",
               "personalPhotoCredential": {
                 "id": "urn:uuid:a1486392-763d-11ed-8281-6be4ae1436ac",
                 "digestMultibase": "zQmdfTbBqBPQ7VNxZEYEj14VmRuZBkqFbiwReogJgS1zR1n"
@@ -130,7 +130,7 @@ class:
 property:
   - id: personalPhotoCredential
     label: A reference to a personal photo
-    domain: ageloa2:Level2AgeAssuranceCheck
+    domain: ageloa2:AgeAssuranceLevel2Check
     range: URL
     comment: >
       A personal photo credential references a credential containing an image
@@ -156,7 +156,7 @@ property:
 
   - id: identityDocument
     label: An identity document
-    domain: ageloa2:Level2AgeAssuranceCheck
+    domain: ageloa2:AgeAssuranceLevel2Check
     comment: >
       An identity document that was used during an identity proofing process.
       The object itself is minimizes the identity document fields shared to the
@@ -180,7 +180,7 @@ property:
 
   - id: documentIdentifier
     label: Identifier for an identity document
-    domain: ageloa2:Level2AgeAssuranceCheck
+    domain: ageloa2:AgeAssuranceLevel2Check
     range: xsd:string
     comment: >
       An identifier for an identity document such as a Driver's License
@@ -202,7 +202,7 @@ property:
 
   - id: expirationDate
     label: Expiration date of an identity document
-    domain: ageloa2:Level2AgeAssuranceCheck
+    domain: ageloa2:AgeAssuranceLevel2Check
     range: xsd:positiveInteger
     comment: >
       The expiration date of the identity document.
@@ -222,7 +222,7 @@ property:
 
   - id: dateOfBirth
     label: Date of birth listed on an identity document
-    domain: ageloa2:Level2AgeAssuranceCheck
+    domain: ageloa2:AgeAssuranceLevel2Check
     range: xsd:positiveInteger
     comment: >
       The date of birth associated with the individual identified by the
@@ -243,7 +243,7 @@ property:
 
   - id: issuingAuthority
     label: Issuing authority for an identity document
-    domain: ageloa2:Level2AgeAssuranceCheck
+    domain: ageloa2:AgeAssuranceLevel2Check
     range: xsd:positiveInteger
     comment: >
       The entity that issued the identity document such as a corporation or
