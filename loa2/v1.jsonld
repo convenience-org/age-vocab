@@ -25,6 +25,8 @@
           "@id": "https://convenience.org/vocab#personalPhotoCredential",
           "@context": {
             "@protected": true,
+            "id": "@id",
+            "type": "@type",
             "digestMultibase": {
               "@id": "https://w3id.org/age/loa2#expirationDate",
               "@type": "https://w3id.org/security#multibase"
