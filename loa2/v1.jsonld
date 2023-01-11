@@ -9,6 +9,8 @@
       "@id": "https://w3id.org/age/loa2#Level2AgeAssuranceCredential",
       "@context": {
         "@protected": true,
+        "id": "@id",
+        "type": "@type",
         "documentIdentifier": "https://w3id.org/age/loa2#documentIdentifier",
         "issuingAuthority": "https://w3id.org/age/loa2#issuingAuthority",
         "expirationDate": {
