@@ -9,6 +9,10 @@
       "@id": "https://schema.org/image",
       "@type": "@id"
     },
+    "digestMultibase": {
+      "@id": "https://w3id.org/security#digestMultibase",
+      "@type": "https://w3id.org/security#multibase"
+    },
     "Level2AgeAssuranceCredential":
       "https://w3id.org/age/loa2#Level2AgeAssuranceCredential",
     "Level2AgeAssuranceCheck": {
@@ -37,16 +41,8 @@
           }
         },
         "personalPhotoCredential": {
-          "@id": "https://w3id.org/age/loa2#personalPhotoCredential",
-          "@context": {
-            "@protected": true,
-            "id": "@id",
-            "type": "@type",
-            "digestMultibase": {
-              "@id": "https://w3id.org/security#digestMultibase",
-              "@type": "https://w3id.org/security#multibase"
-            }
-          }
+          "@id": "https://convenience.org/vocab#personalPhotoCredential",
+          "@type": "@id"
         }
       }
     }
