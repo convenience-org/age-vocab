@@ -127,33 +127,6 @@ class:
             "proof": { ... }
           }
 
-property:
-  - id: personalPhotoCredential
-    label: A reference to a personal photo
-    domain: ageloa2:AgeAssuranceLevel2Check
-    range: URL
-    comment: >
-      A personal photo credential references a credential containing an image
-      that has been used during an identity proofing process. The object itself
-      is privacy-preserving and only contains an identifier and a cryptographic
-      hash of the credential containing the image. The image associated with
-      the personal photo credential matches against the image associated
-      with the `identityDocument` and the individual that presented both
-      pieces of information during an interactive identity proofing event
-      that was performed either in person or remotely.
-    example:
-      - label: A personal photo credential
-        json: |
-          {
-            ...
-            "personalPhotoCredential": {
-              "id": "urn:uuid:a1486392-763d-11ed-8281-6be4ae1436ac",
-              // content hash of referenced PersonalPhotoCredential
-              "digestMultibase": "zQmdfTbBqBPQ7VNxZEYEj14VmRuZBkqFbiwReogJgS1zR1n"
-            }
-            ...
-          }
-
   - id: identityDocument
     label: An identity document
     domain: ageloa2:AgeAssuranceLevel2Check
