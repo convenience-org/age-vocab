@@ -31,7 +31,7 @@
           }
         },
         "personalPhotoCredential": {
-          "@id": "https://convenience.org/vocab#personalPhotoCredential",
+          "@id": "https://w3id.org/age/loa2#personalPhotoCredential",
           "@context": {
             "@protected": true,
             "id": "@id",
