@@ -3,6 +3,12 @@
     "@protected": "true",
     "id": "@id",
     "type": "@type",
+    "name": "https://schema.org/name",
+    "description": "https://schema.org/description",
+    "image": {
+      "@id": "https://schema.org/image",
+      "@type": "@id"
+    },
     "Level2AgeAssuranceCredential":
       "https://w3id.org/age/loa2#Level2AgeAssuranceCredential",
     "Level2AgeAssuranceCheck": {
