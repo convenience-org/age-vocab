@@ -11,15 +11,24 @@
         "@protected": true,
         "id": "@id",
         "type": "@type",
-        "documentIdentifier": "https://w3id.org/age/loa2#documentIdentifier",
-        "issuingAuthority": "https://w3id.org/age/loa2#issuingAuthority",
-        "expirationDate": {
-          "@id": "https://w3id.org/age/loa2#expirationDate",
-          "@type": "http://www.w3.org/2001/XMLSchema#date"
-        },
-        "dateOfBirth": {
-          "@id": "https://w3id.org/age/loa2#dateOfBirth",
-          "@type": "http://www.w3.org/2001/XMLSchema#date"
+        "identityDocument": {
+          "@id": "https://w3id.org/age/loa2#identityDocument",
+          "@type": "@id",
+          "@context": {
+            "@protected": true,
+            "id": "@id",
+            "type": "@type",
+            "documentIdentifier": "https://w3id.org/age/loa2#documentIdentifier",
+            "issuingAuthority": "https://w3id.org/age/loa2#issuingAuthority",
+            "expirationDate": {
+              "@id": "https://w3id.org/age/loa2#expirationDate",
+              "@type": "http://www.w3.org/2001/XMLSchema#date"
+            },
+            "dateOfBirth": {
+              "@id": "https://w3id.org/age/loa2#dateOfBirth",
+              "@type": "http://www.w3.org/2001/XMLSchema#date"
+            }
+          }
         },
         "personalPhotoCredential": {
           "@id": "https://convenience.org/vocab#personalPhotoCredential",
@@ -28,7 +37,7 @@
             "id": "@id",
             "type": "@type",
             "digestMultibase": {
-              "@id": "https://w3id.org/age/loa2#expirationDate",
+              "@id": "https://w3id.org/security#digestMultibase",
               "@type": "https://w3id.org/security#multibase"
             }
           }
